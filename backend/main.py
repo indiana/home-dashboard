@@ -14,21 +14,25 @@ def hello_world():
 def comps():
     comps_list = [
         {
+            "id": 1,
             "ip": "192.168.0.1",
             "name": "Wolverine",
             "ping": "13"
         },
         {
+            "id": 2,
             "ip": "192.168.0.2",
             "name": "Cyclops",
             "ping": "21"
         },
         {
+            "id": 3,
             "ip": "192.168.0.3",
             "name": "Jean Grey",
             "ping": "10"
         },
         {
+            "id": 4,
             "ip": "192.168.0.4",
             "name": "Rogue",
             "ping": "8"

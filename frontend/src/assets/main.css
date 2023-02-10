@@ -1,2 +1,4 @@
-@import './base.css';
+.va-avatar {
+    cursor: pointer;
+}
 

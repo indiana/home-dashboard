@@ -1,5 +1,6 @@
 <script setup>
 import ComputerOnline from './ComputerOnline.vue'
+import ComputerDetails from './ComputerDetails.vue'
 </script>
 
 <template>
@@ -8,7 +9,8 @@ import ComputerOnline from './ComputerOnline.vue'
       <va-card>
         <va-card-title>Computers online</va-card-title>
         <va-card-content>
-            <ComputerOnline v-for="computer in computers" :computerName="computer.name" />
+            <ComputerOnline v-for="computer in computers" :computer="computer" @avatarClicked="showDetails" />
+            <ComputerDetails v-if="selectedComputer" :computer="selectedComputer" @closeDetails="closeDetails"/>
         </va-card-content>
       </va-card>
     </div>
@@ -20,7 +22,8 @@ import ComputerOnline from './ComputerOnline.vue'
 
     export default {
         data: () => ({
-          computers: null
+          computers: null,
+          selectedComputer: null
         }),
         created() {
           this.fetchData()
@@ -29,6 +32,12 @@ import ComputerOnline from './ComputerOnline.vue'
           async fetchData() {
             const url = API_URL
             this.computers = await (await fetch(url)).json()
+          },
+          showDetails(id) {
+            this.selectedComputer = this.computers.find(c => c.id === id)
+          },
+          closeDetails() {
+            this.selectedComputer = null
           }
         }
     }
